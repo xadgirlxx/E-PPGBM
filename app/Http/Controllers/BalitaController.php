@@ -37,7 +37,8 @@ class BalitaController extends Controller
      */
     public function store(Request $request)
     {
-       
+       dd("<h1>ILOVEYOU AGISTA VALOMITA</h1>");
+       exit;
     }
 
     /**
