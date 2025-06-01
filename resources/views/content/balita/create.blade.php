@@ -1,6 +1,7 @@
 @extends('index')
 
 @section('maincontent')
+
 <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
@@ -11,7 +12,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="nik">NIK Balita</label>
-                        <input type="text" class="form-control" id="nik" name="nik" placeholder="NIK Balita">
+                        <input type="text" class="form-control" id="nik" name="nik_balita" placeholder="NIK Balita">
                     </div>
                     <div class="form-group">
                         <label for="tgl_lahir">Tanggal Lahir</label>
@@ -23,7 +24,7 @@
                     </div>
                     <div class="form-group">
                         <label for="no_telp">Nomor Telepon</label>
-                        <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="Nama Balita">
+                        <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="Nomor telepon / Whatsapp">
                     </div>
                     <div class="form-group">
                         <label for="alamat">Alamat</label>
@@ -42,14 +43,14 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="nama">Nama Balita</label>
-                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Balita">
+                        <input type="text" class="form-control" id="nama" name="nama_balita" placeholder="Nama Balita">
                     </div>
                     <div class="form-group">
                         <label for="jenis_kelamin">Jenis Kelamin</label>
-                        <select name="jenis_kelamin" id="jenis_kelamin" class="form-control">
+                        <select name="jk" id="jenis_kelamin" class="form-control">
                             <option value="">Pilih Jenis Kelamin</option>
                             <option value="L">Laki - Laki</option>
-                            <option value="p">Perempuan</option>
+                            <option value="P">Perempuan</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -72,7 +73,7 @@
                     </div>
                     <div class="form-group">
                         <label for="desa">Desa</label>
-                        <select name="desa" id="desa" class="form-control">
+                        <select name="desa_kel" id="desa" class="form-control">
                             <option value="">Loading ...</option>
                         </select>
                     </div>
@@ -98,14 +99,14 @@
         success: function(data) {
           $('#prov').html('<option value="">-- Pilih Provinsi --</option>');
           $.each(data.data, function(i, item) {
-            $('#prov').append(`<option value="${item.code}">${item.name}</option>`);
+            $('#prov').append(`<option value="${item.name}" data-id="${item.code}">${item.name}</option>`);
           });
         }
       });
 
       // Load Kabupaten
       $('#prov').on('change', function() {
-        let provId = $(this).val();
+        let provId =  $(this).find('option:selected').data('id')
         $('#kab').html('<option value="">-- Pilih Kabupaten --</option>');
         $('#kec').html('<option value="">-- Pilih Kecamatan --</option>');
         $('#desa').html('<option value="">-- Pilih Desa --</option>');
@@ -117,7 +118,7 @@
             dataType: 'json',
             success: function(data) {
               $.each(data.data, function(i, item) {
-                $('#kab').append(`<option value="${item.code}">${item.name}</option>`);
+                $('#kab').append(`<option value="${item.name}" data-id="${item.code}">${item.name}</option>`);
               });
             }
           });
@@ -126,7 +127,7 @@
 
       // Load Kecamatan
       $('#kab').on('change', function() {
-        let kabId = $(this).val();
+        let kabId =  $(this).find('option:selected').data('id')
         $('#kec').html('<option value="">-- Pilih Kecamatan --</option>');
         $('#desa').html('<option value="">-- Pilih Desa --</option>');
 
@@ -137,7 +138,7 @@
             dataType: 'json',
             success: function(data) {
               $.each(data.data, function(i, item) {
-                $('#kec').append(`<option value="${item.code}">${item.name}</option>`);
+                $('#kec').append(`<option value="${item.name}" data-id="${item.code}">${item.name}</option>`);
               });
             }
           });
@@ -146,7 +147,7 @@
 
       // Load Desa
       $('#kec').on('change', function() {
-        let kecId = $(this).val();
+        let kecId =  $(this).find('option:selected').data('id')
         $('#desa').html('<option value="">-- Pilih Desa --</option>');
 
         if (kecId) {
@@ -156,7 +157,7 @@
             dataType: 'json',
             success: function(data) {
               $.each(data.data, function(i, item) {
-                $('#desa').append(`<option value="${item.code}">${item.name}</option>`);
+                $('#desa').append(`<option value="${item.name}" data-id="${item.code}">${item.name}</option>`);
               });
             }
           });

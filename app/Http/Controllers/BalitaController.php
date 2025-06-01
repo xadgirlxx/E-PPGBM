@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Balita;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class BalitaController extends Controller
 {
@@ -19,9 +21,21 @@ class BalitaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('content.balita.index');
+        $balitas = Balita::all();
+        $query = Balita::query();
+        if ($request->has('search') && $request->search != '') {
+        $search = $request->search;
+        $query->where(function($q) use ($search) {
+            $q->where('nik_balita', 'like', "%{$search}%")
+              ->orWhere('nama_balita', 'like', "%{$search}%")
+              ->orWhere('nama_ortu', 'like', "%{$search}%");
+        });
+    }
+
+    $balitas = $query->paginate(10)->withQueryString(); 
+        return view('content.balita.index', compact('balitas'));
     }
 
     /**
@@ -37,8 +51,36 @@ class BalitaController extends Controller
      */
     public function store(Request $request)
     {
-       dd("<h1>ILOVEYOU AGISTA VALOMITA</h1>");
-       exit;
+       $validated = $request->validate([
+        'nik_balita'           => 'required|digits:16|unique:balita,nik_balita',
+        'nama_balita'          => 'required|string|max:50',
+        'tgl_lahir'            => 'required',
+        'nama_ortu'            => 'required|string|max:50',
+        'no_telp'              => 'required',
+        'alamat'               => 'required|string',
+        'puskesmas'            => 'required|string',
+        'posyandu'             => 'required|string',
+        'jk'                   => 'required',
+        'prov'                 => 'required',
+        'kab_kota'                  => 'required',
+        'kec'                  => 'required',
+        'desa_kel'                 => 'required',
+        ]);
+        // dd($validated);
+        
+        try {
+            Balita::create($validated);
+            return redirect()
+                ->route('balita.index')
+                ->with('success', 'Data balita berhasil disimpan.');
+        } catch (\Exception $e) {
+            Log::error('Error saat simpan balita: ' . $e->getMessage());
+            return redirect()
+            ->back()
+            ->withInput()
+            ->with('error', 'Terjadi kesalahan saat menyimpan data.');
+        }
+
     }
 
     /**
