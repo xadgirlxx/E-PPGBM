@@ -16,7 +16,7 @@
               <div class="collapse" id="ui-balita">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{ route('balita.index') }}">Daftar Valita</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="/">Tambah Valita</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{ route('balita.create') }}">Tambah Valita</a></li>
                 </ul>
               </div>
             </li>

@@ -6,6 +6,16 @@ use Illuminate\Http\Request;
 
 class BalitaController extends Controller
 {
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -19,7 +29,7 @@ class BalitaController extends Controller
      */
     public function create()
     {
-        //
+        return view('content.balita.create');
     }
 
     /**
@@ -27,7 +37,7 @@ class BalitaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       dd("HALLO AGISTA SAYANG");
     }
 
     /**
