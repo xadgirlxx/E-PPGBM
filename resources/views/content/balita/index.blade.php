@@ -38,7 +38,11 @@
                   <td>{{ $no++ }}</td>
                   <td>{{ $balita->nik_balita }}</td>
                   <td>{{ $balita->nama_balita }}</td>
-                  <td>{{ $balita->jenis_kelamin }}</td>
+                  <td>@if ( $balita->jk  == 'L')
+                      <span>Laki - Laki</span>
+                  @else
+                      <span>Perempuan</span>
+                  @endif</td>
                   <td>{{ $balita->no_telp }}</td>
                   <td>{{ $balita->nama_ortu }}</td>
                   <td>{{ $balita->alamat }}</td>
