@@ -37,7 +37,7 @@ class BalitaController extends Controller
      */
     public function store(Request $request)
     {
-       dd("HALLO AGISTA SAYANG");
+       
     }
 
     /**
