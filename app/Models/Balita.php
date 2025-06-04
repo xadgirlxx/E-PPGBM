@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Balita extends Model
 {
+    use HasFactory;
      protected $table = 'balita';
 
     protected $fillable = [
@@ -24,4 +25,9 @@ class Balita extends Model
         'kec',
         'desa_kel',
     ];
+
+    public function imunisasis()
+    {
+        return $this->hasMany(Imunisasi::class, 'nik_balita', 'nik_balita');
+    }
 }

@@ -1,6 +1,9 @@
 @extends('index')
 
 @section('maincontent')
+@php
+    use Illuminate\Support\Facades\Crypt;
+@endphp
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
@@ -53,11 +56,12 @@
                   <td>{{ $balita->puskesmas }}</td>
                   <td>{{ $balita->posyandu }}</td>
                   <td>
-                    <a href="{{ route('balita.edit', $balita->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <a href="{{ route('balita.edit', $balita->id) }}" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square" title="Edit"></i></a>
+                    <a href="{{ route('balita.imunisasi.index', Crypt::encryptString($balita->nik_balita)) }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-syringe" title="Imunisasi"></i></a>
                     <form action="{{ route('balita.destroy', $balita->id) }}" method="POST" style="display:inline;">
                       @csrf
                       @method('DELETE')
-                      <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin hapus data?')">Delete</button>
+                      <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin hapus data?')"><i class="fa-solid fa-trash" title="Hapus"></i></button>
                     </form>
                   </td>
                 </tr>
