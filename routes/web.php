@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BalitaController;
 use App\Http\Controllers\ImunisasiController;
+use App\Http\Controllers\LogsController;
 use App\Http\Controllers\UkuranController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/log',[App\Http\Controllers\LogsController::class , 'index']);
 
 Auth::routes();
 

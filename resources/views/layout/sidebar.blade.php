@@ -72,6 +72,9 @@
             </form>
               </span>
             </li>
+            <li class="nav-item">
+              <a href="/log" class="nav-link">Log activity</a>
+            </li>
           </ul>
         </nav>
 
