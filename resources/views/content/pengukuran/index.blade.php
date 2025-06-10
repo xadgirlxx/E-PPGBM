@@ -15,7 +15,7 @@
                 <div class="card-header">
                     <div class="card-title"><h2>Identitas Anak</h2></div>
                 </div>
-                <div class="card body">
+                <div class="card-body">
                     <div class="row">
                         <div class="col-md-2">
                             <span>NIK : <b> {{$balitas->nik_balita}}</b></span><br>
