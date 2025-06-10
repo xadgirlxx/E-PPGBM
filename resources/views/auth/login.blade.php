@@ -1,14 +1,13 @@
-@extends('layouts.app')
+@extends('layout.layout_login')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+@section('temp_login')
+ <div class="content-wrapper d-flex align-items-center auth px-0">
+          <div class="row w-100 mx-0">
+            <div class="col-lg-4 mx-auto">
+              <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+                <h4>Hello! <br> Selamat Datang Di Aplikasi E-PPGBM</h4>
+                <h6 class="fw-light">Login Untuk Melanjutkan.</h6>
+                  <form method="POST" action="{{ route('login') }}" class="pt-3">
                         @csrf
 
                         <div class="row mb-3">
@@ -65,9 +64,8 @@
                             </div>
                         </div>
                     </form>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</div>
 @endsection

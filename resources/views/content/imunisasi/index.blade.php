@@ -3,6 +3,7 @@
 @section('maincontent')
 @php
     use Carbon\Carbon;
+    \Carbon\Carbon::setLocale('id');
     $umur = Carbon::parse($balitas->tgl_lahir)->diff(Carbon::now());
 @endphp
 <div class="col-lg-12 grid-margin stretch-card">
@@ -30,13 +31,16 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambahImunisasiModal">Tambah Imunisasi</button>
+                    <a href="/balita" class="btn btn-danger btn-sm">KEMBALI</a>
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#tambahImunisasiModal">Tambah Imunisasi</button>
+                    <a href="{{ route('balita.pengukuran.index', Crypt::encryptString($balitas->nik_balita)) }}" class="btn btn-secondary btn-sm">Tambah Pengukuran</a>
                 </div>
             </div>
         </div>
         <div class="table-responsive">
           <table class="table table-hover" id="tabel-Balita">
             <thead>
+              <tr class="text-center">
                 <th rowspan="2">No</th>
                 <th rowspan="2">Tanggal Imunisasi</th>
                 <th colspan="5" >Jenis Imunisasi</th>
@@ -54,7 +58,7 @@
               @foreach ($imunisasi as $index => $item)
               <tr class="text-center">
                 <td>{{ $index + 1 }}</td>
-                  <td>{{ \Carbon\Carbon::parse($item->tgl_imunisasi)->format('d-m-Y') }}</td>
+                  <td>{{ \Carbon\Carbon::parse($item->tgl_imunisasi)->translatedFormat('d F Y') }}</td>
                   <td>{{ $item->hb ?? '-' }}</td>
                   <td>{{ $item->polio ?? '-' }}</td>
                   <td>{{ $item->campak ?? '-' }}</td>

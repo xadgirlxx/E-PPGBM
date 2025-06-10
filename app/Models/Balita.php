@@ -30,4 +30,9 @@ class Balita extends Model
     {
         return $this->hasMany(Imunisasi::class, 'nik_balita', 'nik_balita');
     }
+    
+    public function pengukuran()
+    {
+        return $this->hasMany(pengukuran::class, 'nik_balita', 'nik_balita');
+    }
 }

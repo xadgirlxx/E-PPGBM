@@ -1,7 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
             <li class="nav-item">
-              <a class="nav-link" href="{{asset('temp')}}/index.html">
+              <a class="nav-link" href="/">
                 <i class="mdi mdi-grid-large menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
               </a>
@@ -60,6 +60,17 @@
                       <li class="nav-item"> <a class="nav-link" href="/">Laporan Kesehatan</a></li>
                 </ul>
               </div>
+            </li>
+            <li class="nav">
+              <span class="btn btn-danger">
+                <a class="dropdown-item" href="{{ route('logout') }}" 
+              onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
+              {{ __('Logout') }} </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+            </form>
+              </span>
             </li>
           </ul>
         </nav>

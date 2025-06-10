@@ -58,6 +58,7 @@
                   <td>
                     <a href="{{ route('balita.edit', $balita->id) }}" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square" title="Edit"></i></a>
                     <a href="{{ route('balita.imunisasi.index', Crypt::encryptString($balita->nik_balita)) }}" class="btn btn-primary btn-sm"><i class="fa-solid fa-syringe" title="Imunisasi"></i></a>
+                    <a href="{{ route('balita.pengukuran.index', Crypt::encryptString($balita->nik_balita)) }}" class="btn btn-secondary btn-sm"><i class="fa-solid fa-weight-scale" title="Pengukuran"></i></a>
                     <form action="{{ route('balita.destroy', $balita->id) }}" method="POST" style="display:inline;">
                       @csrf
                       @method('DELETE')
