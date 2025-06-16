@@ -6,6 +6,22 @@
                 <span class="menu-title">Dashboard</span>
               </a>
             </li>
+            @if (Auth::user()->role = 'ADMIN')
+                <li class="nav-item nav-category">Management User</li>
+            <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="collapse" href="#ui-balita"  aria-controls="ui-basic">
+                <i class="menu-icon mdi mdi-floor-plan"></i>
+                <span class="menu-title">User</span>
+                <i class="menu-arrow"></i>
+              </a>
+              <div class="collapse" id="ui-balita">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{{route('user.index')}}">Daftar User</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{route('user.create')}}">Tambah User</a></li>
+                </ul>
+              </div>
+            </li>
+            @endif
             <li class="nav-item nav-category">Entry</li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#ui-balita"  aria-controls="ui-basic">
@@ -28,8 +44,8 @@
               </a>
               <div class="collapse" id="ui-bumil">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="/">Daftar Ibu Hamil</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="/">Tambah Ibu Hamil</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{ route('bumil.index') }}">Daftar Ibu Hamil</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{{ route('bumil.create') }}">Tambah Ibu Hamil</a></li>
                 </ul>
               </div>
             </li>

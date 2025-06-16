@@ -5,53 +5,69 @@
 <div class="col-md-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-        <h4 class="card-title">Tambah Balita</h4>
-        <form class="forms-sample" method="POST" action="{{route('balita.store')}}">
+        <h4 class="card-title">Tambah Bumil</h4>
+        <form class="forms-sample" method="POST" action="{{route('bumil.store')}}">
             @csrf
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="nik">NIK Balita</label>
-                        <input type="text" class="form-control" id="nik" name="nik_balita" placeholder="NIK Balita">
+                        <label for="nik">NIK Ibu Hamil</label>
+                        <input type="text" class="form-control" id="nik" name="nik_bumil" placeholder="NIK Ibu Hamil">
                     </div>
                     <div class="form-group">
                         <label for="tgl_lahir">Tanggal Lahir</label>
                         <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir" placeholder="Tanggal Lahir">
                     </div>
                     <div class="form-group">
-                        <label for="nama_ortu">Nama Orang Tua</label>
-                        <input type="text" class="form-control" id="nama_ortu" name="nama_ortu" placeholder="Nama Orang tua">
+                        <label for="no_kk">No Kartu Keluarga</label>
+                        <input type="text" class="form-control" id="no_kk" name="no_kk" placeholder="Nomor Kartu Keluarga">
                     </div>
                     <div class="form-group">
-                        <label for="no_telp">Nomor Telepon</label>
-                        <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="Nomor telepon / Whatsapp">
+                        <label for="nama_suami">Nama Suami</label>
+                        <input type="text" class="form-control" id="nama_suami" name="nama_suami" placeholder="Nama Suami">
+                    </div>
+                    <div class="form-group">
+                        <label for="telp_suami">Telepon Suami</label>
+                        <input type="text" class="form-control" id="telp_suami" name="telp_suami" placeholder="Telepon Suami">
                     </div>
                     <div class="form-group">
                         <label for="alamat">Alamat</label>
                         <textarea name="alamat" id="alamat" cols="30" rows="10" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="puskesmas">Puskesmas</label>
-                        <input type="text" class="form-control" id="puskesmas" name="puskesmas" placeholder="Nama Puskesmas">
+                        <label for="faskes1">Faskes 1</label>
+                        <input type="text" class="form-control" id="faskes1" name="faskes1" placeholder="Faskes 1">
                     </div>
                     <div class="form-group">
-                        <label for="posyandu">Posyandu</label>
-                        <input type="text" class="form-control" id="posyandu" name="posyandu" placeholder="Nama Posyandu">
+                        <label for="faskes_rujukan">Faskes Rujukan</label>
+                        <input type="text" class="form-control" id="faskes_rujukan" name="faskes_rujukan" placeholder="Faskes Rujukan">
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="nama">Nama Balita</label>
-                        <input type="text" class="form-control" id="nama" name="nama_balita" placeholder="Nama Balita">
+                        <label for="nama">Nama Ibu Hamil</label>
+                        <input type="text" class="form-control" id="nama" name="nama_bumil" placeholder="Nama Ibu Hamil">
                     </div>
                     <div class="form-group">
-                        <label for="jenis_kelamin">Jenis Kelamin</label>
-                        <select name="jk" id="jenis_kelamin" class="form-control">
-                            <option value="">Pilih Jenis Kelamin</option>
-                            <option value="L">Laki - Laki</option>
-                            <option value="P">Perempuan</option>
+                        <label for="pendidikan">Pendidikan</label>
+                        <select name="pendidikan" id="pendidikan" class="form-control">
+                            <option value="">Pilih Pendidikan</option>
+                            <option value="SD">SD</option>
+                            <option value="SMP">SMP</option>
+                            <option value="SMA/MA/Paket C">SMA/MA/Paket C</option>
+                            <option value="S1">S1</option>
+                            <option value="S2">S2</option>
+                            <option value="S3">S3</option>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pekerjaan">Pekerjaan</label>
+                        <input type="text" name="pekerjaan" id="pekerjaan" class="form-control" placeholder="Pekerjaan">
+                    </div>
+                    <div class="form-group">
+                        <label for="nik_suami">NIK Suami</label>
+                        <input type="text" name="nik_suami" id="nik_suami" class="form-control" placeholder="NIK Suami">
                     </div>
                     <div class="form-group">
                         <label for="prov">Provinsi</label>

@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\BalitaController;
+use App\Http\Controllers\BumilController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\ImunisasiController;
 use App\Http\Controllers\LogsController;
 use App\Http\Controllers\UkuranController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,10 +22,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/log',[App\Http\Controllers\LogsController::class , 'index']);
-
+Route::get('/', [GuestController::class, 'landing']);
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('user', UserController::class);
 Route::resource('balita', BalitaController::class);
 Route::resource('balita.imunisasi', ImunisasiController::class);
 Route::resource('balita.pengukuran', UkuranController::class);
+Route::resource('bumil', BumilController::class);
