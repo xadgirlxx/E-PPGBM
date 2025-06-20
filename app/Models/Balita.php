@@ -35,4 +35,8 @@ class Balita extends Model
     {
         return $this->hasMany(pengukuran::class, 'nik_balita', 'nik_balita');
     }
+    public function imunisasiTerakhir()
+    {
+        return $this->hasOne(Imunisasi::class, 'nik_balita', 'nik_balita')->latestOfMany('tgl_imun');
+    }
 }

@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/log',[App\Http\Controllers\LogsController::class , 'index']);
 Route::get('/', [GuestController::class, 'landing']);
+Route::get('/cek-gizi', [GuestController::class, 'cek'])->name('cek.gizi');
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
