@@ -6,7 +6,8 @@
                 <span class="menu-title">Dashboard</span>
               </a>
             </li>
-            @if (Auth::user()->role = 'ADMIN')
+            {{Auth::user()->role}}
+            @if (Auth::user()->role == 'ADMIN')
                 <li class="nav-item nav-category">Management User</li>
             <li class="nav-item">
               <a class="nav-link" data-bs-toggle="collapse" href="#ui-user"  aria-controls="ui-user">
@@ -88,7 +89,7 @@
             </form>
               </span>
             </li>
-            @if (Auth::user()->role = 'ADMIN')
+            @if (Auth::user()->role == 'ADMIN')
             <li class="nav-item">
               <a href="/log" class="nav-link">Log activity</a>
             </li>

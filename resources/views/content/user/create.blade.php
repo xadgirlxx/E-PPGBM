@@ -27,7 +27,6 @@
                 <select name="role" id="role" class="form-control">
                     <option value="">--Pilih Role--</option>
                     <option value="ADMIN">ADMIN</option>
-                    <option value="KADER">KADER</option>
                     <option value="PETUGAS">PETUGAS</option>
                 </select>
             </div>
