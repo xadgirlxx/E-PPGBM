@@ -1,12 +1,12 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
           <ul class="nav">
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/dashboard">
                 <i class="mdi mdi-grid-large menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
               </a>
             </li>
-            {{Auth::user()->role}}
+            {{-- {{Auth::user()->role}} --}}
             @if (Auth::user()->role == 'ADMIN')
                 <li class="nav-item nav-category">Management User</li>
             <li class="nav-item">
@@ -59,8 +59,9 @@
               </a>
               <div class="collapse" id="ui-lap-balita">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="/">Laporan Gizi</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="/">Laporan BMI</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="/laporan/balita">Laporan Balita</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="/laporan/gizi">Laporan Gizi</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="/laporan/bmi">Laporan BMI</a></li>
                   <li class="nav-item"> <a class="nav-link" href="/">Laporan Vaksin</a></li>
                 </ul>
               </div>
