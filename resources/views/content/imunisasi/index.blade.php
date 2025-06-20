@@ -44,7 +44,7 @@
                 <th rowspan="2">No</th>
                 <th rowspan="2">Tanggal Imunisasi</th>
                 <th colspan="5" >Jenis Imunisasi</th>
-                <th rowspan="2">Action</th>
+                {{-- <th rowspan="2">Action</th> --}}
               </tr>
               <tr class="text-center">
                 <th>HB</th>
@@ -64,15 +64,10 @@
                   <td>{{ $item->campak ?? '-' }}</td>
                   <td>{{ $item->BCG ? '✓' : '-' }}</td>
                   <td>{{ $item->IPV ? '✓' : '-' }}</td>
-                  <td>
-                    <!-- Tombol Edit/Hapus -->
-                    <a href="{{ route('balita.imunisasi.edit', ['balitum' => $balitas->id, 'imunisasi' => $item->id_imun]) }}" class="btn btn-sm btn-warning">Edit</a>
-                    <form action="{{ route('balita.imunisasi.destroy', ['balitum' => $balitas->id, 'imunisasi' => $item->id_imun]) }}" method="POST" style="display:inline-block;">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus data ini?')">Hapus</button>
-                    </form>
-                  </td>
+                  {{-- <td>
+                     <!-- Tombol Edit/Hapus -->
+                    <a href="{{ route('balita.imunisasi.edit', ['balitum' => $balitas->id, 'imunisasi' => $item->id_imun]) }}" class="btn btn-sm btn-warning">Edit</a> 
+                  </td> --}}
                 </tr>
               @endforeach
             </tbody>

@@ -9,12 +9,12 @@
             @if (Auth::user()->role = 'ADMIN')
                 <li class="nav-item nav-category">Management User</li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#ui-balita"  aria-controls="ui-basic">
+              <a class="nav-link" data-bs-toggle="collapse" href="#ui-user"  aria-controls="ui-user">
                 <i class="menu-icon mdi mdi-floor-plan"></i>
                 <span class="menu-title">User</span>
                 <i class="menu-arrow"></i>
               </a>
-              <div class="collapse" id="ui-balita">
+              <div class="collapse" id="ui-user">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{{route('user.index')}}">Daftar User</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{{route('user.create')}}">Tambah User</a></li>
@@ -24,7 +24,7 @@
             @endif
             <li class="nav-item nav-category">Entry</li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#ui-balita"  aria-controls="ui-basic">
+              <a class="nav-link" data-bs-toggle="collapse" href="#ui-balita"  aria-controls="ui-balita">
                 <i class="menu-icon mdi mdi-floor-plan"></i>
                 <span class="menu-title">Balita</span>
                 <i class="menu-arrow"></i>
@@ -37,7 +37,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#ui-bumil"  aria-controls="ui-basic">
+              <a class="nav-link" data-bs-toggle="collapse" href="#ui-bumil"  aria-controls="ui-bumil">
                 <i class="menu-icon mdi mdi-floor-plan"></i>
                 <span class="menu-title">Ibu Hamil</span>
                 <i class="menu-arrow"></i>
@@ -51,7 +51,7 @@
             </li>
             <li class="nav-item nav-category">Laporan</li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#ui-lap-balita"  aria-controls="ui-basic">
+              <a class="nav-link" data-bs-toggle="collapse" href="#ui-lap-balita"  aria-controls="ui-lap_balita">
                 <i class="menu-icon mdi mdi-floor-plan"></i>
                 <span class="menu-title">Laporan Balita</span>
                 <i class="menu-arrow"></i>
@@ -65,7 +65,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" data-bs-toggle="collapse" href="#ui-lap-bumil"  aria-controls="ui-basic">
+              <a class="nav-link" data-bs-toggle="collapse" href="#ui-lap-bumil"  aria-controls="ui-lap-bumil">
                 <i class="menu-icon mdi mdi-floor-plan"></i>
                 <span class="menu-title">Laporan Ibu Hamil</span>
                 <i class="menu-arrow"></i>
@@ -88,9 +88,11 @@
             </form>
               </span>
             </li>
+            @if (Auth::user()->role = 'ADMIN')
             <li class="nav-item">
               <a href="/log" class="nav-link">Log activity</a>
             </li>
+            @endif
           </ul>
         </nav>
 

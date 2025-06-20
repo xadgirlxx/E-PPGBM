@@ -44,7 +44,7 @@
                 <th rowspan="2">No</th>
                 <th rowspan="2">Tanggal pengukuran</th>
                 <th colspan="6" >Pengukuran</th>
-                <th rowspan="2">Action</th>
+                {{-- <th rowspan="2">Action</th> --}}
               </tr>
               <tr class="text-center">
                 <th>TB</th>
@@ -66,15 +66,10 @@
                   <td>{{ $item->kelas_ibu ?? '-' }}</td>
                   <td>{{ $item->cara_ukur ?? '-' }}</td>
                   <td>{{ $item->vitamin_a ?? '-' }}</td>
-                  <td>
+                  {{-- <td>
                     <!-- Tombol Edit/Hapus -->
-                    <a href="{{ route('balita.pengukuran.edit', ['balitum' => $balitas->id, 'pengukuran' => $item->id_ukuran]) }}" class="btn btn-sm btn-warning">Edit</a>
-                    <form action="{{ route('balita.pengukuran.destroy', ['balitum' => $balitas->id, 'pengukuran' => $item->id_ukuran]) }}" method="POST" style="display:inline-block;">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Yakin hapus data ini?')">Hapus</button>
-                    </form>
-                  </td>
+                    <a href="{{ route('balita.pengukuran.edit', ['balitum' => $balitas->id, 'pengukuran' => $item->id_ukuran]) }}" class="btn btn-sm btn-warning">Edit</a> 
+                  </td> --}}
                 </tr>
               @endforeach
             </tbody>

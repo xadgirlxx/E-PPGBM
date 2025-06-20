@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Balita;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
 class BalitaController extends Controller
@@ -88,30 +90,69 @@ class BalitaController extends Controller
      */
     public function show(string $id)
     {
-        //
+       //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $balita = Balita::findOrFail($id);
+        return view('content.balita.edit', compact('balita'));
     }
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nik_balita' => 'required|string',
+            'nama_balita' => 'required|string',
+            'tgl_lahir' => 'required|date',
+            'jk' => 'required|in:L,P',
+            'nama_ortu' => 'required|string',
+            'no_telp' => 'nullable|string',
+            'alamat' => 'required|string',
+            'prov' => 'required|string',
+            'kab_kota' => 'required|string',
+            'kec' => 'required|string',
+            'desa_kel' => 'required|string',
+            'puskesmas' => 'nullable|string',
+            'posyandu' => 'nullable|string',
+        ]);
+
+        $balita = Balita::findOrFail($id);
+        $balita->update([
+            'nik_balita' => $request->nik_balita,
+            'nama_balita' => $request->nama_balita,
+            'tgl_lahir' => $request->tgl_lahir,
+            'jk' => $request->jk,
+            'nama_ortu' => $request->nama_ortu,
+            'no_telp' => $request->no_telp,
+            'alamat' => $request->alamat,
+            'prov' => $request->prov,
+            'kab_kota' => $request->kab_kota,
+            'kec' => $request->kec,
+            'desa_kel' => $request->desa_kel,
+            'puskesmas' => $request->puskesmas,
+            'posyandu' => $request->posyandu,
+        ]);
+
+        return redirect()->route('balita.index')->with('success', 'Data balita berhasil diperbarui.');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $balita = Balita::findOrFail($id);
+        $balita->delete();
+
+        return redirect()->route('balita.index')->with('success', 'Data balita berhasil dihapus.');
     }
 }
