@@ -1,102 +1,89 @@
 @extends('index')
 
 @section('maincontent')
-  <div class="col-md-3 dropdown-menu-static-demo">
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> BalitaTidak Naik BB </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <h6 class="dropdown-header"></h6>
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Separated link</a>
-        </div>
+<div class="row">
+    {{-- Balita Tidak Naik BB --}}
+    <div class="col-md-4 dropdown mb-3">
+        <button class="btn btn-primary dropdown-toggle w-100" type="button" id="naikBbDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            Balita Tidak Naik BB
+        </button>
+        <ul class="dropdown-menu w-100" aria-labelledby="naikBbDropdown">
+            @foreach($naik_bb as $item)
+                <li><a class="dropdown-item" href="{{ route('balita.detail', $item->id) }}">{{ $item->nama }} - {{ $item->nik }}</a></li>
+            @endforeach
+        </ul>
     </div>
- </div>
 
-<div class="col-md-3 dropdown-menu-static-demo">
-<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Balita Uderweight (ZS <- 2) </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-    <h6 class="dropdown-header"></h6>
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Separated link</a>
+    {{-- Balita Underweight --}}
+    <div class="col-md-4 dropdown mb-3">
+        <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="underweightDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            Balita Underweight (ZS < -2)
+        </button>
+        <ul class="dropdown-menu w-100" aria-labelledby="underweightDropdown">
+            @foreach($underweight as $item)
+                <li><a class="dropdown-item" href="{{ route('balita.detail', $item->id) }}">{{ $item->nama }} - {{ $item->nik }}</a></li>
+            @endforeach
+        </ul>
     </div>
-</div>
-</div>
 
-<div class="col-md-3 dropdown-menu-static-demo">
-<div class="dropdown">
-    <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Gizi Kurang (Tidak Stunting) </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-    <h6 class="dropdown-header"></h6>
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Separated link</a>
+    {{-- Balita Stunting --}}
+    <div class="col-md-4 dropdown mb-3">
+        <button class="btn btn-warning dropdown-toggle w-100" type="button" id="stuntingDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            Balita Stunting
+        </button>
+        <ul class="dropdown-menu w-100" aria-labelledby="stuntingDropdown">
+            @foreach($stunting as $item)
+                <li><a class="dropdown-item" href="{{ route('balita.detail', $item->id) }}">{{ $item->nama }} - {{ $item->nik }}</a></li>
+            @endforeach
+        </ul>
     </div>
-</div>
-</div>
 
-<div class="col-md-3 dropdown-menu-static-demo">
-<div class="dropdown">
-    <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Balita Stunting </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-    <h6 class="dropdown-header"></h6>
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Separated link</a>
+    {{-- Gizi Kurang --}}
+    <div class="col-md-4 dropdown mb-3">
+        <button class="btn btn-danger dropdown-toggle w-100" type="button" id="giziKurangDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            Gizi Kurang (Tidak Stunting)
+        </button>
+        <ul class="dropdown-menu w-100" aria-labelledby="giziKurangDropdown">
+            @foreach($gizi_kurang as $item)
+                <li><a class="dropdown-item" href="{{ route('balita.detail', $item->id) }}">{{ $item->nama }} - {{ $item->nik }}</a></li>
+            @endforeach
+        </ul>
     </div>
-</div>
-</div>
 
-<div class="col-md-3 dropdown-menu-static-demo">
-<div class="dropdown">
-    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton8" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Balita Menyimpang </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton8">
-    <h6 class="dropdown-header"></h6>
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Separated link</a>
+    {{-- Balita Menyimpang --}}
+    <div class="col-md-4 dropdown mb-3">
+        <button class="btn btn-light dropdown-toggle w-100" type="button" id="menyimpangDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            Balita Menyimpang
+        </button>
+        <ul class="dropdown-menu w-100" aria-labelledby="menyimpangDropdown">
+            @foreach($menyimpang as $item)
+                <li><a class="dropdown-item" href="{{ route('balita.detail', $item->id) }}">{{ $item->nama }} - {{ $item->nik }}</a></li>
+            @endforeach
+        </ul>
     </div>
-</div>
-</div>
 
-<div class="col-md-3 dropdown-menu-static-demo">
-<div class="dropdown">
-    <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Bumil KEK </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
-    <h6 class="dropdown-header"></h6>
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Separated link</a>
+    {{-- Bumil KEK --}}
+    <div class="col-md-4 dropdown mb-3">
+        <button class="btn btn-success dropdown-toggle w-100" type="button" id="bumilKekDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            Bumil KEK
+        </button>
+        <ul class="dropdown-menu w-100" aria-labelledby="bumilKekDropdown">
+            @foreach($bumil_kek as $item)
+                <li><a class="dropdown-item" href="{{ route('balita.detail', $item->id) }}">{{ $item->nama }} - {{ $item->nik_bumil }}</a></li>
+            @endforeach
+        </ul>
     </div>
-</div>
-</div>
 
-<div class="col-md-3 dropdown-menu-static-demo">
-<div class="dropdown">
-    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton6" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true"> Bumil Anemia </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton6">
-    <h6 class="dropdown-header"></h6>
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Separated link</a>
+    {{-- Bumil Anemia --}}
+    <div class="col-md-4 dropdown mb-3">
+        <button class="btn btn-info dropdown-toggle w-100" type="button" id="bumilAnemiaDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            Bumil Anemia
+        </button>
+        <ul class="dropdown-menu w-100" aria-labelledby="bumilAnemiaDropdown">
+            @foreach($bumil_anemia as $item)
+                <li><a class="dropdown-item" href="{{ route('balita.detail', $item->id) }}">{{ $item->nama }} - {{ $item->nik_bumil }}</a></li>
+            @endforeach
+        </ul>
     </div>
 </div>
-</div>
-
 @endsection

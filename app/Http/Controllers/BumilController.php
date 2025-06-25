@@ -37,7 +37,7 @@ class BumilController extends Controller
         'nama_bumil'    => 'required|string|max:100',
         'tgl_lahir'     => 'required|date',
         'no_kk'         => 'required|digits:16',
-        'nama_suami'      => 'required|string|max:100',
+        'nama_suami'    => 'required|string|max:100',
         'telp_suami'    => 'nullable|string|max:15',
         'alamat'        => 'required|string',
         'faskes1'       => 'nullable|string|max:100',
@@ -49,17 +49,14 @@ class BumilController extends Controller
         'kab_kota'      => 'required|string',
         'kec'           => 'required|string',
         'desa_kel'      => 'required|string',
-        ]);
+    ]);
+    try{
+        $bumil = Bumil::create($validated);
+        return redirect()->route('bumil.index')->with('success', 'Data Ibu Hamil berhasil disimpan.');
+    } catch(\Exception $e){
+        return redirect()->route('bumil.index')->with('error', 'Data Ibu Hamil gagal disimpan.');
+        }
 
-        $payload=[
-            'faskes1'       => $request->faskes1,
-            'faskes_rujukan'=> $request->faskes_rujukan,
-        ];
-        $body = $request->only((new bumil)->getFillable());
-        $bumil = bumil::create($body);
-        $kesehatan = $bumil->kesbumil()->create($payload);
-
-       return redirect()->route('bumil.index')->with('success', 'Data Ibu Hamil berhasil disimpan.');
     }
 
     /**

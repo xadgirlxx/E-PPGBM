@@ -22,6 +22,15 @@
         <li><a href="#tentang" class="hover:text-green-600">Tentang</a></li>
         <li><a href="#fitur" class="hover:text-green-600">Fitur</a></li>
         <li><a href="#kontak" class="hover:text-green-600">Kontak</a></li>
+        @guest
+          @if (Route::has('login'))
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+              </li>
+          @endif
+        @else
+              <li><a href="/dashboard" class="hover:text-green-600">Dashboard</a></li>
+        @endguest
       </ul>
     </div>
   </nav>

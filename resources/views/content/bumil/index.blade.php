@@ -48,14 +48,19 @@
                     <td>{{ $item->prov ?? '-' }}</td>
                     <td>{{ $item->kab_kota ?? '-' }}</td>
                     <td>{{ $item->kec ?? '-' }}</td>
-                    <td>{{ $item->desa ?? '-' }}</td>
+                    <td>{{ $item->desa_kel ?? '-' }}</td>
                     <td>
-                        <a href="{{ route('bumil.edit', $item->id_bumil) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="{{ route('bumil.destroy', $item->id_bumil) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin hapus data ini?')">Hapus</button>
-                        </form>
+                        <a href="{{ route('bumil.edit', $item->id_bumil) }}" class="btn btn-warning btn-sm"><i class="fa-solid fa-pen-to-square" title="Edit"></i></a>
+                        <a href="{{ route('bumil.kesbumil.index', Crypt::encryptString($item->nik_bumil)) }}" class="btn btn-primary btn-sm">
+                          <i class="fa-solid fa-plus" title="Tambah Kehamilan"></i>
+                      </a>
+                      <form action="{{ route('bumil.destroy', $item->id_bumil) }}" method="POST" class="form-delete" data-nama="{{ $item->nama_bumil }}" style="display:inline;">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-danger btn-sm">
+                              <i class="fa-solid fa-trash" title="Hapus"></i>
+                          </button>
+                      </form>
                     </td>
                     </tr>
                 @endforeach

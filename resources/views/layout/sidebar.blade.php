@@ -74,8 +74,8 @@
               </a>
               <div class="collapse" id="ui-lap-bumil">
                   <ul class="nav flex-column sub-menu">
-                      <li class="nav-item"> <a class="nav-link" href="/">Laporan Kehamilan</a></li>
-                      <li class="nav-item"> <a class="nav-link" href="/">Laporan Kesehatan</a></li>
+                      <li class="nav-item"> <a class="nav-link" href="/laporan/kehamilan-terakhir">Laporan Kehamilan</a></li>
+                      <li class="nav-item"> <a class="nav-link" href="/laporan/kesehatan-bumil">Laporan Kesehatan</a></li>
                 </ul>
               </div>
             </li>

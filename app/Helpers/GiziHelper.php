@@ -176,4 +176,45 @@ class GiziHelper
             return 'Obesitas';
         }
     }
+
+    public static function tidakNaikBB($balita)
+    {
+        return isset($balita->bb_sekarang, $balita->bb_lalu) && $balita->bb_sekarang <= $balita->bb_lalu;
+    }
+
+    // Balita Underweight (ZS < -2)
+    public static function isUnderweight($balita)
+    {
+        return isset($balita->zs_score) && $balita->zs_score < -2;
+    }
+
+    // Balita Stunting
+    public static function isStunting($balita)
+    {
+        return isset($balita->zscore_tb_u) && $balita->zscore_tb_u < -2;
+    }
+
+    // Gizi Kurang
+    public static function isGiziKurang($balita)
+    {
+        return isset($balita->bb_u) && $balita->bb_u < -2;
+    }
+
+    // Balita Menyimpang (contoh: IMT sangat rendah atau sangat tinggi)
+    public static function isMenyimpang($balita)
+    {
+        return isset($balita->imt) && ($balita->imt < 11 || $balita->imt > 18); // threshold dapat disesuaikan
+    }
+
+    // Bumil KEK
+    public static function isBumilKEK($bumil)
+    {
+        return isset($bumil->lingkar_lengan_atas) && $bumil->lingkar_lengan_atas < 23.5;
+    }
+
+    // Bumil Anemia
+    public static function isBumilAnemia($bumil)
+    {
+        return isset($bumil->hb) && $bumil->hb < 11;
+    }
 }
