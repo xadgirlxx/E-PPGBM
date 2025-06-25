@@ -34,7 +34,7 @@ class HomeController extends Controller
         $gizi_kurang = $balita->filter(fn($b) => GiziHelper::isGiziKurang($b));
         $menyimpang = $balita->filter(fn($b) => GiziHelper::isMenyimpang($b));
 
-        dd($naik_bb);
+        // dd($naik_bb);
         $bumil = bumil::all();
         $bumil_kek = $bumil->filter(fn($b) => GiziHelper::isBumilKEK($b));
         $bumil_anemia = $bumil->filter(fn($b) => GiziHelper::isBumilAnemia($b));
