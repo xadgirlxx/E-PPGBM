@@ -24,6 +24,8 @@ class bumil extends Model
         'kab_kota',
         'kec',
         'desa_kel',
+        'faskes1',
+        'faskes_rujukan',
         'alamat',
         'puskesmas_pembina',
         'created_at',

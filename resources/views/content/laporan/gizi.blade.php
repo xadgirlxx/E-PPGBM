@@ -35,7 +35,7 @@
                             $bb = $balita->pengukuranTerakhir->bb ?? null;
                             $jk = $balita->jk;
 
-                            $statusGizi = $bb ? \app\Helpers\GiziHelper::hitungStatusGizi($bb, $umurbulan, $jk) : 'Belum Diukur';
+                            $statusGizi = $bb ? \App\Helpers\GiziHelper::hitungStatusGizi($bb, $umurbulan, $jk) : 'Belum Diukur';
                     
                             $umur = \Carbon\Carbon::parse($balita->tgl_lahir)->diff(\Carbon\Carbon::now());
                         @endphp

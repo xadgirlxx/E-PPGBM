@@ -88,6 +88,9 @@ class BumilController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $bumil = bumil::findOrFail($id);
+        $bumil->delete();
+
+        return redirect()->route('bumil.index')->with('success', 'Data Ibu Hamil berhasil dihapus.');
     }
 }
