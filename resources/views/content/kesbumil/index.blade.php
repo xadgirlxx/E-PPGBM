@@ -124,7 +124,13 @@
 
           <div class="mb-3">
             <label for="gol_darah" class="form-label">Golongan Darah</label>
-            <input type="text" name="gol_darah" class="form-control" placeholder="A / B / AB / O">
+            <select name="gol_darah" id="gol_darah" class="form-select">
+              <option value="" selected disabled>Pilih Golongan Darah</option>
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="AB">AB</option>
+              <option value="O">O</option>
+            </select>
           </div>
 
           <div class="mb-3">

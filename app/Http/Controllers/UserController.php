@@ -63,7 +63,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+       $user = \App\Models\User::findOrFail($id);
+        return view('content.user.edit', compact('user'));
     }
 
     /**
@@ -71,7 +72,15 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+        'name' => 'required',
+        'email' => 'required|email',
+    ]);
+
+    $user = \App\Models\User::findOrFail($id);
+    $user->update($request->only(['name', 'email']));
+
+    return redirect()->route('user.index')->with('success', 'User berhasil diperbarui');
     }
 
     /**
@@ -79,6 +88,7 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        \App\Models\User::destroy($id);
+    return redirect()->route('user.index')->with('success', 'User berhasil dihapus');
     }
 }

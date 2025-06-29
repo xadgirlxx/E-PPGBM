@@ -42,6 +42,9 @@ Route::get('/laporan/kesehatan-bumil', [LaporanController::class, 'kesehatanBumi
 Route::get('/laporan/kesehatan-bumil-excel', [LaporanController::class, 'exportKesehatanExcel'])->name('laporan.kesehatan.excel');
 Route::get('/laporan/kesehatan-bumil-pdf', [LaporanController::class, 'exportKesehatanPDF'])->name('laporan.kesehatan.pdf');
 Route::get('/laporan/ajax/{jenis}', [LaporanController::class, 'ajaxLaporan']);
+Route::get('/laporan/vaksin', [LaporanController::class, 'vaksin'])->name('laporan.vaksin');
+Route::get('/laporan/vaksin-excel', [LaporanController::class, 'exportVaksinExcel'])->name('laporan.vaksin.excel');
+Route::get('/laporan/vaksin-pdf', [LaporanController::class, 'exportVaksinPDF'])->name('laporan.vaksin.pdf');
 
 //patrial dashboard
 Route::get('/laporan/naik-bb', [LaporanController::class, 'showDropdown'])->name('laporan.naik_bb');

@@ -7,6 +7,7 @@ use App\Exports\BalitaExport;
 use App\Exports\BalitaGiziExport;
 use App\Exports\KehamilanTerakhirExport;
 use App\Exports\KesehatanBumilExport;
+use App\Exports\VaksinExport;
 use App\Helpers\GiziHelper;
 use App\Models\Balita;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -184,6 +185,28 @@ class LaporanController extends Controller
                 return response('<div class="alert alert-warning">Data tidak ditemukan</div>', 404);
         }
     }
-    
+    public function vaksin()
+    {
+        $dataVaksin = DB::table('imunisasi')
+        ->select('nik_balita', 'tgl_imun', 'polio', 'campak')
+        ->get();
+
+        return view('content.laporan.vaksin', compact('dataVaksin'));
+    }
+
+    public function exportVaksinExcel()
+    {
+        return Excel::download(new VaksinExport, 'laporan_vaksin.xlsx');
+    }
+
+    public function exportVaksinPDF()
+    {
+         $dataVaksin = DB::table('imunisasi')
+        ->select('nik_balita', 'tgl_imun', 'polio', 'campak')
+        ->get();
+
+        $pdf = PDF::loadView('laporan.vaksin_pdf', compact('dataVaksin'));
+        return $pdf->stream('laporan_vaksin.pdf');
+    }
 
 }

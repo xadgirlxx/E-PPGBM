@@ -15,8 +15,9 @@
                         <input type="text" class="form-control" id="nik" name="nik_balita" placeholder="NIK Balita">
                     </div>
                     <div class="form-group">
-                        <label for="tgl_lahir">Tanggal Lahir</label>
-                        <input type="date" class="form-control" id="tgl_lahir" name="tgl_lahir" placeholder="Tanggal Lahir">
+                      <label for="tgl_lahir">Tanggal Lahir:</label>
+                      <input type="date" id="tgl_lahir" name="tgl_lahir" class="form-control">
+                      <div id="tgl_lahir_error" style="color: red; margin-top: 5px;"></div>
                     </div>
                     <div class="form-group">
                         <label for="nama_ortu">Nama Orang Tua</label>
@@ -90,7 +91,59 @@
 </div>
 
 <script>
+  
    $(document).ready(function() {
+            const tglLahirInput = document.getElementById('tgl_lahir');
+            const tglLahirError = document.getElementById('tgl_lahir_error');
+
+            const today = new Date();
+
+            // --- 1. Set atribut min dan max langsung pada input ---
+            const formatForInputDate = (date) => {
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            };
+
+            // Calculate 5 years ago from current date (June 29, 2025)
+            // This will be June 29, 2020
+            const fiveYearsAgo = new Date(today);
+            fiveYearsAgo.setFullYear(today.getFullYear() - 5);
+
+            // Set max attribute (cannot select future dates)
+            tglLahirInput.setAttribute('max', formatForInputDate(today));
+
+            // Set min attribute (cannot select dates older than 5 years ago)
+            tglLahirInput.setAttribute('min', formatForInputDate(fiveYearsAgo));
+
+
+            // --- 2. Tambahkan event listener untuk validasi setelah perubahan ---
+            tglLahirInput.addEventListener('change', function() {
+                const inputDate = new Date(this.value);
+
+                // Bersihkan pesan error sebelumnya
+                tglLahirError.textContent = '';
+
+                // Periksa apakah tanggal yang dipilih valid (tidak NaN)
+                if (isNaN(inputDate.getTime())) {
+                    tglLglahirError.textContent = 'Format tanggal tidak valid.';
+                    this.value = ''; // Kosongkan jika tidak valid
+                    return;
+                }
+
+                // Perhitungan umur yang lebih robust (mempertimbangkan bulan dan hari)
+                let age = today.getFullYear() - inputDate.getFullYear();
+                const m = today.getMonth() - inputDate.getMonth();
+                if (m < 0 || (m === 0 && today.getDate() < inputDate.getDate())) {
+                    age--;
+                }
+
+                if (age < 0 || age > 5) {
+                    tglLahirError.textContent = 'Umur balita harus antara 0 sampai 5 tahun.';
+                    this.value = ''; // Kosongkan input
+                }
+            });
       // Load Provinsi
       $.ajax({
         url: '/api/provinces',

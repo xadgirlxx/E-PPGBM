@@ -62,7 +62,7 @@
                   <li class="nav-item"> <a class="nav-link" href="/laporan/balita">Laporan Balita</a></li>
                   <li class="nav-item"> <a class="nav-link" href="/laporan/gizi">Laporan Gizi</a></li>
                   <li class="nav-item"> <a class="nav-link" href="/laporan/bmi">Laporan BMI</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="/">Laporan Vaksin</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="/laporan/vaksin">Laporan Vaksin</a></li>
                 </ul>
               </div>
             </li>
